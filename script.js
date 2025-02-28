@@ -1,11 +1,12 @@
 const boardInputs = document.querySelectorAll('.board-input');
 const boardSizeInput = document.getElementById('boardSize');
 const generateButton = document.getElementById('generateBoard');
+const clearButton = document.getElementById('clearBoard');
 const board = document.getElementById('myBoard');
 
 // this function is used to create the size board requested for the user dynamically
 generateButton.addEventListener('click', generateDynamicBoard);
-
+clearButton.addEventListener('click', generateDynamicBoard);
 function generateDynamicBoard() {
   const size = parseInt(boardSizeInput.value);
   if (isNaN(size) || size < 1) return; // Prevent invalid input
@@ -32,7 +33,8 @@ function generateDynamicBoard() {
 generateDynamicBoard();
 
 // Re-generate board when the size changes via keyboard entry.
-boardSizeInput.addEventListener('change', generateDynamicBoard)
+boardSizeInput.addEventListener('change', generateDynamicBoard);
+
 
 
 // this function is for putting each letter in each board space
@@ -57,7 +59,7 @@ function getBoardData() {
   });
   return data;
 }
- 
+
 // moves to the next cell when enter is pressed 
 // register jQuery extension
 jQuery.extend(jQuery.expr[':'], {
@@ -99,7 +101,7 @@ $(document).on('keydown', 'input,select', function (e) {
       index--
       if (index >= $canfocus.length) index = $canfocus.index(this) - 1;
     }
-
     $canfocus.eq(index).focus();
   }
 });
+
