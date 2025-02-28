@@ -31,7 +31,7 @@ header, h1{
     color: rgba(255, 255, 255, 1);
 }
 
-/* grid size label */
+/* board size label */
 label{
     font-family: "clarendon-urw-extra-narrow", serif;
     font-weight: 700;
@@ -40,26 +40,26 @@ label{
 }
 /* input box */
 /* From Uiverse.io by Anas92876 */ 
-#gridSize {
+#boardSize {
     max-width: 30px;
     padding: 10px;
     border: none;
     box-shadow: 2px 2px 30px 2px lightgrey;
 }
   
-/* aspects of the grid */
-#myGrid {
+/* aspects of the board */
+#myBoard {
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
 }
 
-#myGrid td {
+#myBoard td {
     border: 1px solid black;
     padding: 0;
 }
   
-.grid-input {
+.board-input {
     font-family: Arial, sans-serif;
     width: 20px; /* Set a fixed width */
     height: 20px; /* Set a fixed height equal to the width */
@@ -70,11 +70,11 @@ label{
     font-size: 16px; /* Adjust font size as needed */
 }
 
-.grid-input:focus{
+.board-input:focus{
     background-color: #ffda00;
 }
 
-/* generate grid button */
+/* generate board button */
 button {
     font-family: "Libre Franklin", sans-serif;
     font-optical-sizing: auto;

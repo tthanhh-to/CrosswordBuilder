@@ -1,24 +1,24 @@
-const gridInputs = document.querySelectorAll('.grid-input');
-const gridSizeInput = document.getElementById('gridSize');
-const generateButton = document.getElementById('generateGrid');
-const grid = document.getElementById('myGrid');
+const boardInputs = document.querySelectorAll('.board-input');
+const boardSizeInput = document.getElementById('boardSize');
+const generateButton = document.getElementById('generateBoard');
+const board = document.getElementById('myBoard');
 
-// this function is used to create the size grid requested for the user dynamically
-generateButton.addEventListener('click', generateDynamicGrid);
+// this function is used to create the size board requested for the user dynamically
+generateButton.addEventListener('click', generateDynamicBoard);
 
-function generateDynamicGrid() {
-  const size = parseInt(gridSizeInput.value);
+function generateDynamicBoard() {
+  const size = parseInt(boardSizeInput.value);
   if (isNaN(size) || size < 1) return; // Prevent invalid input
 
-  grid.innerHTML = ''; // Clear previous grid
+  board.innerHTML = ''; // Clear previous board
 
   for (let i = 0; i < size; i++) {
-    const row = grid.insertRow();
+    const row = board.insertRow();
     for (let j = 0; j < size; j++) {
       const cell = row.insertCell();
       const input = document.createElement('input');
       input.type = 'text';
-      input.className = 'grid-input';
+      input.className = 'board-input';
       input.maxLength = 1;
       cell.appendChild(input);
       input.addEventListener('input', (event) => {
@@ -28,28 +28,28 @@ function generateDynamicGrid() {
   }
 }
 
-// Generate initial grid on page load
-generateDynamicGrid();
+// Generate initial board on page load
+generateDynamicBoard();
 
-// Re-generate grid when the size changes via keyboard entry.
-gridSizeInput.addEventListener('change', generateDynamicGrid)
+// Re-generate board when the size changes via keyboard entry.
+boardSizeInput.addEventListener('change', generateDynamicBoard)
 
 
-// this function is for putting each letter in each grid space
+// this function is for putting each letter in each board space
 
-gridInputs.forEach(input => {
+boardInputs.forEach(input => {
   input.addEventListener('change', (event) => {
     console.log('Input changed:', event.target.value);
     // Add validation or data processing here
   });
 });
 
-function getGridData() {
+function getBoardData() {
   const data = [];
-  const rows = document.querySelectorAll('#myGrid tr');
+  const rows = document.querySelectorAll('#myBoard tr');
   rows.forEach(row => {
     const rowData = [];
-    const inputs = row.querySelectorAll('.grid-input');
+    const inputs = row.querySelectorAll('.board-input');
     inputs.forEach(input => {
       rowData.push(input.value);
     });
@@ -80,7 +80,7 @@ $(document).on('keypress', 'input,select', function (e) {
 });
 
 $(document).on('keydown', 'input,select', function (e) {
-  const size = parseInt(gridSizeInput.value);
+  const size = parseInt(boardSizeInput.value);
   if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === "ArrowRight" || e.key === "ArrowLeft") {
     e.preventDefault();
     var $canfocus = $(':focusable');
