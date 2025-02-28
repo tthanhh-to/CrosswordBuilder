@@ -36,9 +36,17 @@ label{
     font-family: "clarendon-urw-extra-narrow", serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 42px;
+    font-size: 35px;
 }
-
+/* input box */
+/* From Uiverse.io by Anas92876 */ 
+#gridSize {
+    max-width: 30px;
+    padding: 10px;
+    border: none;
+    box-shadow: 2px 2px 30px 2px lightgrey;
+}
+  
 /* aspects of the grid */
 #myGrid {
     margin-left: auto;
@@ -62,27 +70,42 @@ label{
     font-size: 16px; /* Adjust font size as needed */
 }
 
+.grid-input:focus{
+    background-color: #ffda00;
+}
+
 /* generate grid button */
-#generateGrid {
-    background: #fbca1f;
+button {
     font-family: "Libre Franklin", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
-    font-style: normal;
-    padding: 0.1em 0.5em;
-    font-size: 18px;
-    border: 3px solid black;
-    border-radius: 0.4em;
-    box-shadow: 0.1em 0.1em;
+    font-size: 12px;
+    background-color: #fafbfc;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    color: #24292e;
+    padding: 6px 16px;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
     cursor: pointer;
 }
-  
-#generateGrid:hover {
-transform: translate(-0.05em, -0.05em);
-box-shadow: 0.15em 0.15em;
+
+button:hover {
+background-color: #f3f4f6;
+transition-duration: 0.1s;
 }
 
-#generateGrid:active {
-transform: translate(0.05em, 0.05em);
-box-shadow: 0.05em 0.05em;
+button:disabled {
+background-color: #f3f4f6;
+border-color: rgba(27, 31, 35, 0.15);
+color: #959da5;
+}
+
+button:active {
+background-color: #c4c8ce;
+}
+
+#clearBoard{
+    position: absolute;
+    top: 97px;
+    right: 20px;
 }
