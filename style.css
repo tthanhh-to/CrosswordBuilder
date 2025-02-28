@@ -1,0 +1,88 @@
+header, h1{
+    font-family: "clarendon-urw", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* login  button */
+.login {    
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    display: flex;
+    border-radius: 3px;
+    border: 1px solid #000;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0.625rem 2.5rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+    transition: all  .2s ease;
+    text-decoration: none;
+}
+
+.login:hover {
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+/* grid size label */
+label{
+    font-family: "clarendon-urw-extra-narrow", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 42px;
+}
+
+/* aspects of the grid */
+#myGrid {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+#myGrid td {
+    border: 1px solid black;
+    padding: 0;
+}
+  
+.grid-input {
+    font-family: Arial, sans-serif;
+    width: 20px; /* Set a fixed width */
+    height: 20px; /* Set a fixed height equal to the width */
+    box-sizing: border-box;
+    border: none;
+    text-align: center; /* Center the text inside the input */
+    padding: 0; /* Remove padding from inputs */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* generate grid button */
+#generateGrid {
+    background: #fbca1f;
+    font-family: "Libre Franklin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    padding: 0.1em 0.5em;
+    font-size: 18px;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+    cursor: pointer;
+}
+  
+#generateGrid:hover {
+transform: translate(-0.05em, -0.05em);
+box-shadow: 0.15em 0.15em;
+}
+
+#generateGrid:active {
+transform: translate(0.05em, 0.05em);
+box-shadow: 0.05em 0.05em;
+}

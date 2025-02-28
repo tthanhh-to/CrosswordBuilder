@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- adding font for grid generator clarendon from adobe -->
+    <link rel="stylesheet" href="https://use.typekit.net/apk0gqo.css">
+    <!-- adding font franklin from google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Crossword Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Crossword Builder</h1>
+    <button class="login">LOG IN</button>
+  </header>
+  <section>
+    <label for="gridSize">Grid Size</label>
+    <input type="number" id="gridSize" value="12" min="1">
+    <button id="generateGrid">Generate Grid</button>
+    <br><br>
+    <!-- creating the grid -->
+    <table id="myGrid"></table>
+      <!-- <td><input type="text" class="grid-input" maxlength="1"></td> -->
+  </section>
+  <script src="script.js"></script>
+
+</body>
