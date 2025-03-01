@@ -3,6 +3,7 @@ const boardSizeInput = document.getElementById('boardSize');
 const generateButton = document.getElementById('generateBoard');
 const clearButton = document.getElementById('clearBoard');
 const board = document.getElementById('myBoard');
+const downloadButton = document.getElementById('save');
 
 // this function is used to create the size board requested for the user dynamically
 generateButton.addEventListener('click', generateDynamicBoard);
@@ -60,14 +61,6 @@ function getBoardData() {
   return data;
 }
 
-// possible solution if instead of moving cursor to next cell
-// first check if cursor is to the end of the cell after the data
-// if not move to end instead of moving cursor to next cell!
-// but does not need function moving to the right bc it has no actions when it is moved
-
-
-
-
 // moves to the next cell when enter is pressed 
 // register jQuery extension
 jQuery.extend(jQuery.expr[':'], {
@@ -122,3 +115,24 @@ $(document).on('keydown', 'input,select', function (e) {
   }
 });
 
+
+downloadButton.addEventListener
+('click', async function () {
+    const filename = 'boardData.pdf';
+    try {
+        const opt = {
+            margin: 1,
+            filename: filename,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: {
+                unit: 'in', format: 'letter',
+                orientation: 'portrait'
+            }
+        };
+        await html2pdf().set(opt).
+            from(myBoard).save();
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+});
