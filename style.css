@@ -37,12 +37,14 @@ label{
     font-weight: 700;
     font-style: normal;
     font-size: 35px;
+    margin: 20px;
 }
+
 /* input box */
 /* From Uiverse.io by Anas92876 */ 
 #boardSize {
     max-width: 30px;
-    padding: 10px;
+    padding: 5px;
     border: none;
     box-shadow: 2px 2px 30px 2px lightgrey;
 }
@@ -104,8 +106,7 @@ button:active {
 background-color: #c4c8ce;
 }
 
-#clearBoard{
-    position: absolute;
-    top: 97px;
-    right: 20px;
+.flex-container{
+    display: flex;
+    flex-direction: row;
 }
