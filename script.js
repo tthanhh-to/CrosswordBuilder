@@ -60,6 +60,14 @@ function getBoardData() {
   return data;
 }
 
+// possible solution if instead of moving cursor to next cell
+// first check if cursor is to the end of the cell after the data
+// if not move to end instead of moving cursor to next cell!
+// but does not need function moving to the right bc it has no actions when it is moved
+
+
+
+
 // moves to the next cell when enter is pressed 
 // register jQuery extension
 jQuery.extend(jQuery.expr[':'], {
@@ -87,6 +95,7 @@ $(document).on('keydown', 'input,select', function (e) {
     e.preventDefault();
     var $canfocus = $(':focusable');
     var index = $canfocus.index(this); // Get current element index
+    let focusedInput = $('input:focus');
 
     if (e.key === 'ArrowUp') {
       index = index-size; // Move to the element above
@@ -95,9 +104,17 @@ $(document).on('keydown', 'input,select', function (e) {
       index = index+size; // Move to the element below
       if (index >= $canfocus.length) index = $canfocus.length; // Wrap around to the first element
     } else if (e.key === 'ArrowRight'){
-      index++
-      if (index >= $canfocus.length) index = $canfocus.index(this) + 1;
-    } else{
+        if (focusedInput.length == 1){
+          // Set the cursor to the end
+          this.setSelectionRange(1,1);
+          index++
+          if (index >= $canfocus.length) index = $canfocus.index(this) + 1;
+        }
+        else{
+          index++
+          if (index >= $canfocus.length) index = $canfocus.index(this) + 1;
+        }
+      } else{
       index--
       if (index >= $canfocus.length) index = $canfocus.index(this) - 1;
     }
