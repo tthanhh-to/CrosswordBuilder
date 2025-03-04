@@ -4,16 +4,18 @@ const generateButton = document.getElementById('generateBoard');
 const clearButton = document.getElementById('clearBoard');
 const board = document.getElementById('myBoard');
 const downloadButton = document.getElementById('save');
+const addSubButton = document.getElementById('addSub');
+
 
 // this function is used to create the size board requested for the user dynamically
 generateButton.addEventListener('click', generateDynamicBoard);
 clearButton.addEventListener('click', generateDynamicBoard);
 function generateDynamicBoard() {
   const size = parseInt(boardSizeInput.value);
+  console.log(genClass);
   if (isNaN(size) || size < 1) return; // Prevent invalid input
 
   board.innerHTML = ''; // Clear previous board
-
   for (let i = 0; i < size; i++) {
     const row = board.insertRow();
     for (let j = 0; j < size; j++) {
@@ -32,6 +34,21 @@ function generateDynamicBoard() {
 
 // Generate initial board on page load
 generateDynamicBoard();
+ 
+// // add number then call generate board with the +/- button(UI)
+addSubButton.addEventListener('click', addSubBoard);
+function addSubBoard(){
+  const genClass = generateButton.className; 
+  if (genClass ==  "numLeft"){
+    boardSizeInput = boardSizeInput - 1;
+  }
+  else{
+    boardSizeInput = boardSizeInput + 1;
+  }
+
+  generateDynamicBoard();
+}
+
 
 // Re-generate board when the size changes via keyboard entry.
 boardSizeInput.addEventListener('change', generateDynamicBoard);
