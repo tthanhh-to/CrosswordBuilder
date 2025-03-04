@@ -4,7 +4,8 @@ const clearButton = document.getElementById('clearBoard');
 const board = document.getElementById('myBoard');
 const downloadButton = document.getElementById('save');
 const subButton = document.getElementById('numLeft');
-const addButton = document.getElementById('numRight')
+const addButton = document.getElementById('numRight');
+const blackoutButton = document.getElementById('blackout');
 
 // this function is used to create the size board requested for the user dynamically
 clearButton.addEventListener('click', generateDynamicBoard);
@@ -35,7 +36,6 @@ generateDynamicBoard();
 
 // Re-generate board when the size changes via keyboard entry.
 boardSizeInput.addEventListener('change', generateDynamicBoard);
-
 
 // add number then call generate board with the +/- button(UI)
 addButton.addEventListener('click', addBoard);
@@ -74,6 +74,13 @@ function getBoardData() {
   return data;
 }
 
+// blackout the cell and makes it unavailable to type/traverse in unless it's pressed 
+blackoutButton.addEventListener('click', blackoutCell);
+
+function blackoutCell() {
+
+}
+
 // moves to the next cell when enter is pressed 
 // register jQuery extension
 jQuery.extend(jQuery.expr[':'], {
@@ -81,7 +88,6 @@ jQuery.extend(jQuery.expr[':'], {
       return $(el).is('a, button, :input, [tabindex]');
   }
 });
-
 
 //for enter key
 $(document).on('keypress', 'input,select', function (e) {
@@ -95,6 +101,7 @@ $(document).on('keypress', 'input,select', function (e) {
   }
 });
 
+// allows the arrow keys to traverse through the board
 $(document).on('keydown', 'input,select', function (e) {
   const size = parseInt(boardSizeInput.value);
   if (e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === "ArrowRight" || e.key === "ArrowLeft") {
@@ -127,7 +134,6 @@ $(document).on('keydown', 'input,select', function (e) {
     $canfocus.eq(index).focus();
   }
 });
-
 
 downloadButton.addEventListener
 ('click', async function () {

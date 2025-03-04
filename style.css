@@ -43,7 +43,7 @@ label{
     font-weight: 700;
     font-style: normal;
     font-size: 35px;
-    margin: 20px;
+    padding: 10px;
 }
   
 /* aspects of the board */
@@ -57,7 +57,7 @@ label{
     border: 1px solid black;
     padding: 0;
 }
-  
+
 .board-input {
     font-family: Arial, sans-serif;
     width: 20px; /* Set a fixed width */
@@ -73,7 +73,19 @@ label{
     background-color: #ffda00;
 }
 
-/* From Uiverse.io by Cybercom682 */ 
+/* board size number value */
+#boardSize {
+    width: 40px;
+    text-align: center;
+    border-radius: 13em;
+    outline: none;
+    border: none;
+    font-size: 16px; /* Adjust font size as needed */
+    color: #002019;
+    background-color: transparent;
+}
+
+/* left right btns */ 
 .numberControl {
     display: flex;
     align-items: center;
@@ -102,8 +114,8 @@ label{
 }
   
 .number-quantity {
-    padding: 0.25rem;
     border: 0;
+    padding: none;
     width: 15px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -113,25 +125,8 @@ label{
 #numRight:hover::after {
     background-color: #666666;
 }
-  
 
-/* From Uiverse.io by Gautammsharma */ 
-/* main container for inputs */
-
-/* board size number */
-#boardSize {
-    width: 40px;
-    text-align: center;
-    border-radius: 13em;
-    outline: none;
-    border: none;
-    padding: 5px;
-    font-size: 16px; /* Adjust font size as needed */
-    color: #002019;
-    background-color: transparent;
-}
-
-/* generate board button */
+/* clear board button */
 button {
     font-family: "Libre Franklin", sans-serif;
     font-optical-sizing: auto;
@@ -166,5 +161,16 @@ button:active {
     flex-direction: row;
     gap: 10px;
     align-items: center;
-
 }
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+}
+  
+.left-half {
+/* Styles for the left half */
+    justify-content: center;
+    align-items: center;
+}
+
