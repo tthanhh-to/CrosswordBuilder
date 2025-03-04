@@ -1,3 +1,9 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 header, h1{
     font-family: "clarendon-urw", serif;
     font-weight: 700;
@@ -39,15 +45,6 @@ label{
     font-size: 35px;
     margin: 20px;
 }
-
-/* input box */
-/* From Uiverse.io by Anas92876 */ 
-#boardSize {
-    max-width: 30px;
-    padding: 5px;
-    border: none;
-    box-shadow: 2px 2px 30px 2px lightgrey;
-}
   
 /* aspects of the board */
 #myBoard {
@@ -76,6 +73,64 @@ label{
     background-color: #ffda00;
 }
 
+/* From Uiverse.io by Cybercom682 */ 
+.numberControl {
+    display: flex;
+    align-items: center;
+}
+  
+#numLeft::before,
+#numRight::after {
+    content: attr(data-content);
+    background-color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: 20px;
+    color: white;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+  
+#numLeft::before {
+    content: "-";
+}
+  
+#numRight::after {
+    content: "+";
+}
+  
+.number-quantity {
+    padding: 0.25rem;
+    border: 0;
+    width: 15px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+  
+#numLeft:hover::before,
+#numRight:hover::after {
+    background-color: #666666;
+}
+  
+
+/* From Uiverse.io by Gautammsharma */ 
+/* main container for inputs */
+
+/* board size number */
+#boardSize {
+    width: 40px;
+    text-align: center;
+    border-radius: 13em;
+    outline: none;
+    border: none;
+    padding: 5px;
+    font-size: 16px; /* Adjust font size as needed */
+    color: #002019;
+    background-color: transparent;
+}
+
 /* generate board button */
 button {
     font-family: "Libre Franklin", sans-serif;
@@ -92,21 +147,24 @@ button {
 }
 
 button:hover {
-background-color: #f3f4f6;
-transition-duration: 0.1s;
+    background-color: #f3f4f6;
+    transition-duration: 0.1s;
 }
 
 button:disabled {
-background-color: #f3f4f6;
-border-color: rgba(27, 31, 35, 0.15);
-color: #959da5;
+    background-color: #f3f4f6;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959da5;
 }
 
 button:active {
-background-color: #c4c8ce;
+    background-color: #c4c8ce;
 }
 
 .flex-container{
     display: flex;
     flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
 }

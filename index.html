@@ -25,14 +25,16 @@
   <section>
     <div class="flex-container">
       <label for="boardSize">Board Size</label>
-      <input type="number" id="boardSize" value="12" min="1">
-      <button id="generateBoard">Generate Board</button>
+      <div class="numberControl">
+        <div id="numLeft"></div>
+        <input type="number" id="boardSize" class="number-quantity" value="12" min="1">
+        <div id="numRight"></div>
+      </div>
       <button id="clearBoard">Clear Board</button>
     </div>
     <br><br>
     <!-- creating the board-->
     <table id="myBoard"></table>
-      <!-- <td><input type="text" class="grid-input" maxlength="1"></td> -->
   </section>
   <script src="script.js"></script>
 

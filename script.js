@@ -1,12 +1,12 @@
 const boardInputs = document.querySelectorAll('.board-input');
 const boardSizeInput = document.getElementById('boardSize');
-const generateButton = document.getElementById('generateBoard');
 const clearButton = document.getElementById('clearBoard');
 const board = document.getElementById('myBoard');
 const downloadButton = document.getElementById('save');
+const subButton = document.getElementById('numLeft');
+const addButton = document.getElementById('numRight')
 
 // this function is used to create the size board requested for the user dynamically
-generateButton.addEventListener('click', generateDynamicBoard);
 clearButton.addEventListener('click', generateDynamicBoard);
 function generateDynamicBoard() {
   const size = parseInt(boardSizeInput.value);
@@ -37,6 +37,19 @@ generateDynamicBoard();
 boardSizeInput.addEventListener('change', generateDynamicBoard);
 
 
+// add number then call generate board with the +/- button(UI)
+addButton.addEventListener('click', addBoard);
+subButton.addEventListener('click', subBoard);
+
+function addBoard(){
+  boardSizeInput.value = parseInt(boardSizeInput.value) + 1;
+  generateDynamicBoard();
+}
+
+function subBoard(){
+  boardSizeInput.value -= 1;
+  generateDynamicBoard();
+}
 
 // this function is for putting each letter in each board space
 
