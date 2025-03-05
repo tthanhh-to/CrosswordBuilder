@@ -73,6 +73,7 @@ label{
     background-color: #ffda00;
 }
 
+
 /* board size number value */
 #boardSize {
     width: 40px;
@@ -173,4 +174,3 @@ button:active {
     justify-content: center;
     align-items: center;
 }
-

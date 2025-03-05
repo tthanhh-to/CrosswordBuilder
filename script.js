@@ -5,7 +5,8 @@ const board = document.getElementById('myBoard');
 const downloadButton = document.getElementById('save');
 const subButton = document.getElementById('numLeft');
 const addButton = document.getElementById('numRight');
-const blackoutButton = document.getElementById('blackout');
+//const blackoutButton = document.getElementById('blackout');
+const boardInput = document.querySelector('.board-input'); // Select your element
 
 // this function is used to create the size board requested for the user dynamically
 clearButton.addEventListener('click', generateDynamicBoard);
@@ -75,11 +76,44 @@ function getBoardData() {
 }
 
 // blackout the cell and makes it unavailable to type/traverse in unless it's pressed 
-blackoutButton.addEventListener('click', blackoutCell);
+//blackoutButton.addEventListener('click', blackoutCell);
 
-function blackoutCell() {
+$(document).ready(function() {
+  let isBlackout = false;
+  let focusedElement = null;
+  let focusColor = {};
 
-}
+  $(document).on('focus', 'input, select', function() {
+    focusedElement = $(this);
+    focusColor[this] = $(this).css('background-color');
+  });
+
+  $(document).on('blur', 'input, select', function() {
+    if (!isBlackout && focusedElement && focusedElement[0] === this) {
+      $(this).css('background-color', 'white'); // Restore original color on blur
+      $(this).css('background-color', 'focusColor');
+    }
+  });
+
+  $('#blackout').click(function() {
+    isBlackout = !isBlackout;
+
+    if (isBlackout && focusedElement) {
+      focusedElement.each(function() {
+        $(this).data('originalColor', $(this).css('background-color'));
+        $(this).css('background-color', 'black');
+        $(this).prop('readOnly', true); // Disable typing, not the entire element
+      });
+    } else if (!isBlackout && focusedElement) {
+      focusedElement.each(function() {
+        $(this).css('background-color', $(this).data('originalColor'));
+        $(this).removeData('originalColor');
+        $(this).prop('readOnly', false); // Re-enable typing
+      });
+      focusedElement = null;
+    }
+  });
+});
 
 // moves to the next cell when enter is pressed 
 // register jQuery extension
