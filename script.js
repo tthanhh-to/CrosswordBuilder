@@ -75,24 +75,21 @@ function getBoardData() {
   return data;
 }
 
+// implement highlight function that highlights the specific cell + the cells in the same row + coloumn
+
+
+
+
 // blackout the cell and makes it unavailable to type/traverse in unless it's pressed 
 //blackoutButton.addEventListener('click', blackoutCell);
 
 $(document).ready(function() {
   let isBlackout = false;
   let focusedElement = null;
-  let focusColor = {};
 
   $(document).on('focus', 'input, select', function() {
     focusedElement = $(this);
     focusColor[this] = $(this).css('background-color');
-  });
-
-  $(document).on('blur', 'input, select', function() {
-    if (!isBlackout && focusedElement && focusedElement[0] === this) {
-      $(this).css('background-color', 'white'); // Restore original color on blur
-      $(this).css('background-color', 'focusColor');
-    }
   });
 
   $('#blackout').click(function() {

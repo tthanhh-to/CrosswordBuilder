@@ -69,9 +69,9 @@ label{
     font-size: 16px; /* Adjust font size as needed */
 }
 
-.board-input:focus{
+/* .board-input:focus{
     background-color: #ffda00;
-}
+} */
 
 
 /* board size number value */
