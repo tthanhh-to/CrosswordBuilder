@@ -5,7 +5,7 @@ const board = document.getElementById('myBoard');
 const downloadButton = document.getElementById('save');
 const subButton = document.getElementById('numLeft');
 const addButton = document.getElementById('numRight');
-//const blackoutButton = document.getElementById('blackout');
+const blackoutButton = document.getElementById('blackout');
 const boardInput = document.querySelector('.board-input'); // Select your element
 
 // this function is used to create the size board requested for the user dynamically
@@ -75,42 +75,105 @@ function getBoardData() {
   return data;
 }
 
+// functions are used for retrieving the cell within the table that is currently being focused on 
+// will be useful for blackout function and highlighting the row/column of the cell
+
+// Helper function to find the closest ancestor with a given tag name
+// uses the tag of the cell aka td(table data) to ensure that what's being focused on is a table cell
+// without helper function the function picks up INPUT as the tag which is nested in the td so we need helper function
+// event listener just updates whenever the cell is changed
+function findAncestor(element, tagName) {
+  let current = element;
+  while (current) {
+    if (current.tagName === tagName.toUpperCase()) {
+      return current;
+    }
+    current = current.parentNode;
+  }
+  return null;
+}
+
+function getFocusedTableCell() {
+  const activeElement = document.activeElement;
+  // Find the closest TD ancestor of the focused element
+  const focusedCell = findAncestor(activeElement, 'TD');
+  if (focusedCell) {
+    return focusedCell;
+  }
+  return null; // No focused table cell found
+}
+
+board.addEventListener('focusin', (event) => {
+  const focusedElement = event.target;
+  const focusedCell = findAncestor(focusedElement, 'TD');
+
+  if (focusedCell) {
+    console.log("Focused cell (via focusin):", focusedCell);
+    console.log("Row index:", focusedCell.parentNode.rowIndex);
+    console.log("Column index:", focusedCell.cellIndex);
+  }
+});
+
+
 // implement highlight function that highlights the specific cell + the cells in the same row + coloumn
+function highlightFocusedRow() { // Removed the 'color' argument
+  const previouslyHighlighted = document.querySelector('.highlighted-row');
+  if (previouslyHighlighted) {
+    previouslyHighlighted.classList.remove('highlighted-row');
+  }
 
+  const focusedRow = getFocusedTableCell();
+  if (focusedRow) {
+    focusedRow.classList.add('highlighted-row');
+  }
+}
 
+// Highlight on initial focus
+highlightFocusedRow();
+
+// Highlight when focus changes within the table
+board.addEventListener('focusin', () => {
+  highlightFocusedRow();
+});
 
 
 // blackout the cell and makes it unavailable to type/traverse in unless it's pressed 
-//blackoutButton.addEventListener('click', blackoutCell);
+// blackoutButton.addEventListener('click', blackoutCell);
+// function blackoutCell(){
+//   let isBlackout = false;
+//   let focusedElement = null;
 
-$(document).ready(function() {
-  let isBlackout = false;
-  let focusedElement = null;
+// }
 
-  $(document).on('focus', 'input, select', function() {
-    focusedElement = $(this);
-    focusColor[this] = $(this).css('background-color');
-  });
 
-  $('#blackout').click(function() {
-    isBlackout = !isBlackout;
+// $(document).ready(function() {
+//   let isBlackout = false;
+//   let focusedElement = null;
 
-    if (isBlackout && focusedElement) {
-      focusedElement.each(function() {
-        $(this).data('originalColor', $(this).css('background-color'));
-        $(this).css('background-color', 'black');
-        $(this).prop('readOnly', true); // Disable typing, not the entire element
-      });
-    } else if (!isBlackout && focusedElement) {
-      focusedElement.each(function() {
-        $(this).css('background-color', $(this).data('originalColor'));
-        $(this).removeData('originalColor');
-        $(this).prop('readOnly', false); // Re-enable typing
-      });
-      focusedElement = null;
-    }
-  });
-});
+//   $(document).on('focus', 'input, select', function() {
+//     focusedElement = $(this);
+//     focusColor[this] = $(this).css('background-color');
+//   });
+
+//   $('#blackout').click(function() {
+//     isBlackout = !isBlackout;
+
+//     if (isBlackout && focusedElement) {
+//       focusedElement.each(function() {
+//         $(this).data('originalColor', $(this).css('background-color'));
+//         $(this).css('background-color', 'black');
+//         $(this).prop('readOnly', true); // Disable typing, not the entire element
+//       });
+//     } else if (!isBlackout && focusedElement) {
+//       focusedElement.each(function() {
+//         $(this).css('background-color', $(this).data('originalColor'));
+//         $(this).removeData('originalColor');
+//         $(this).prop('readOnly', false); // Re-enable typing
+//       });
+//       focusedElement = null;
+//     }
+//   });
+// });
 
 // moves to the next cell when enter is pressed 
 // register jQuery extension

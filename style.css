@@ -174,3 +174,8 @@ button:active {
     justify-content: center;
     align-items: center;
 }
+
+.highlighted-row {
+    /* Add other styles you want for the highlighted row */
+    background-color: lightblue;
+}
